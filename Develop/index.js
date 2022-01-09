@@ -29,7 +29,7 @@ const fs=requre('fs')
 const generateHTML=require('../dist/team.html')
 
 //Create array of user inputs
-const questions=[
+const managerQuestions=[
     {
         type:'input',
         name:'name',
@@ -57,17 +57,60 @@ const questions=[
         choices:[
             {name: 'Engineer'},
             {name: 'Intern'},
-            {name: 'I do not want to add any additional team members'},
+            {name: 'I do not want to add any more team members.'}
         ]
     },
-    {    
-        type:'input',
-        name:'id',
-        message: "What is the team managers' ID",
-    },
-    {    
-        type:'input',
-        name:'id',
-        message: "What is the team managers' ID",
-    },
 ]
+
+    const engQuestions
+    [
+    {
+        type: 'input',
+        name: 'engName',
+        message: "What is the Engineers' name"
+    },
+
+    {    
+        type:'input',
+        name:'id',
+        message: "What is the team Engineers' ID",
+    },
+    {
+        type: 'input',
+        name: 'github',
+        message: "Please enter the Engineers' email address"
+    },
+    {
+        type: 'input',
+        name: 'github',
+        message: "Please enter the Engineers' github user name",
+    },
+    
+    ]
+
+    const internQuestions
+    [
+    {
+        type: 'input',
+        name: 'internName',
+        message: "What is the Interns' name"
+    },
+
+    {    
+        type:'input',
+        name:'id',
+        message: "What is the Interns' ID",
+    },
+    {
+        type: 'input',
+        name: 'github',
+        message: "Please enter the Interns' email address"
+    },
+    {
+        type: 'input',
+        name: 'github',
+        message: "What school does the Intern currently attend?",
+    },
+
+    ]
+
