@@ -34,7 +34,7 @@ const questions=
 inquirer.prompt([
     {
         type:'input',
-        name:'name',
+        name:'mgrname',
         message: "What is the team managers' name?",
     },
     {
@@ -58,6 +58,7 @@ inquirer.prompt([
         message: "Which type of team member would you like to add?",
         choices:['Engineer','Intern','I do not want to add any more team members.', ],  
 }])
+// If selection is Engineer ask the following questions
 .then(answers=>{
     if (answers.member==='Engineer'){
         inquirer.prompt([
@@ -83,7 +84,10 @@ inquirer.prompt([
             message:"What is the Engineers' Github username",
             }
         ])
-    } else if (answers.member==='Intern'){
+    } 
+    
+// If selection is Engineer ask the following questions
+    else if (answers.member==='Intern'){
         inquirer.prompt([
             {     
             type: 'input',
