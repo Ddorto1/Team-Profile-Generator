@@ -25,10 +25,14 @@ const Manager= require ('./lib/Manager')
 const Engineer= require('./lib/Engineer')
 const Employee= require('./lib/Employee')
 const Intern= require('./lib/Intern')
+const fs = require('fs')
+const generateHTML=require('./utils/generatehtml')
+// const HTML=require('./utils/team')
+// const { write } = require('ieee754')
 
 // const fs=requre('fs')
 // const generateHTML=require('dist/team.html')
-
+const members= []
 //Create array of user inputs
 const questions=
 inquirer.prompt([
@@ -58,6 +62,7 @@ inquirer.prompt([
         message: "Which type of team member would you like to add?",
         choices:['Engineer','Intern','I do not want to add any more team members.', ],  
 }])
+
 // If selection is Engineer ask the following questions
 .then(answers=>{
     if (answers.member==='Engineer'){
@@ -110,67 +115,37 @@ inquirer.prompt([
             name: 'school',
             message:"What school is the intern currently attending?",
             }
-        ])
-    }
-//         .then(response=>{
-//             const engTeam= new Engineer (answers.name, answers.engId, answers.engEmail, answers.github)
-//         })
-//     }
-// })
-//  (answers.member===Intern){
+    ])
+}
+        // .then(response=>{
+        //     const mgr= new manager (answers.mgrname, answers.mgrid, answers.email, answers.office)
+        //     members.push(mgr)
+        //     console.log (mgr)
+        // })
+        // .then(response=>{
+        //     const eng= new Engineer (answers.name, answers.engId, answers.engEmail, answers.github)
+        //     members.push(eng)
+        //     console.log(eng)
+        // })
+        // .then(response=>{
+        //     const intern= new Intern (answers.internName, answers.internId, answers.internEmail, answer.school)
+        //     members.push(intern)
+        //     console.log(intern)
+        // })
+    },
 
-// }
-    
-    
-    // const engQuestions=inquirer.prompt(
-    // [
-    // {
-    //     type: 'input',
-    //     name: 'engName',
-    //     message: "What is the Engineers' name"
-    // },
-
-    // {    
-    //     type:'input',
-    //     name:'engId',
-    //     message: "What is the team Engineers' ID",
-    // },
-    // {
-    //     type: 'input',
-    //     name: 'engEmail',
-    //     message: "Please enter the Engineers' email address"
-    // },
-    // {
-    //     type: 'input',
-    //     name: 'github',
-    //     message: "Please enter the Engineers' github user name",
-    // },
-    
-    // ]);
-    
-    // const internQuestions= inquirer.prompt(
-    // [
-    // {
-    //     type: 'input',
-    //     name: 'internName',
-    //     message: "What is the Interns' name"
-    // },
-
-    // {    
-    //     type:'input',
-    //     name:'internid',
-    //     message: "What is the Interns' ID",
-    // },
-    // {
-    //     type: 'input',
-    //     name: 'internEmail',
-    //     message: "Please enter the Interns' email address"
-    // },
-    // {
-    //     type: 'input',
-    //     name: 'school',
-    //     message: "What school does the Intern currently attend?",
-    // },
-
-    // ]);
+  
+function write(data){
+    fs.writeFile('team.html', generateHtml(data), err=>{
+    if (err) throw new Error(err);
+    console.log('HTML complete! Reference TEAM.html to see the results')
 })
+},
+
+function init(){
+    inquirer.prompt (questions)
+    // .then (data=>{
+    
+    //     write(data)
+    })
+
